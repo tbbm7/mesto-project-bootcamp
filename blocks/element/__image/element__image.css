@@ -1,0 +1,13 @@
+﻿.element__image {
+    background-size : contain;
+    background-repeat : no-repeat;
+    width: 282px;
+    height: 282px;
+}
+
+@media screen and (max-width: 320px) {
+    .element__image {
+        width: 88.375vw;
+        height:  88.375vw;
+    }
+}
