@@ -1,5 +1,5 @@
 ﻿.element__delete {
-    background: url(../../../../images/element_delete.svg);
+    background: url(../../../images/element_delete.svg);
     background-position: center;
     background-repeat: no-repeat;
     width: 18px;
@@ -13,6 +13,6 @@
 }
 
 .element__delete.button_active1 {
-    background: url(../../../../images/element__like_active.svg);
+    background: url(../../../images/element__like_active.svg);
     opacity: 1;
 }
