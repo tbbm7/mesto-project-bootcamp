@@ -16,12 +16,15 @@
 @import url(../blocks/profile/__edit-button/profile__edit-button.css);
 @import url(../blocks/profile/__block/profile__block.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/profile/__edit_avatar/profile__edit_avatar.css);
 
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/elements/__list/elements__list.css);
 
 @import url(../blocks/element/element.css);
 @import url(../blocks/element/__block/element__block.css);
+@import url(../blocks/element/__like-number/element__like-number.css);
+@import url(../blocks/element/__likes-block/element__likes-block.css);
 @import url(../blocks/element/__button-like/element__button-like.css);
 @import url(../blocks/element/__image/element__image.css);
 @import url(../blocks/element/__title/element__title.css);

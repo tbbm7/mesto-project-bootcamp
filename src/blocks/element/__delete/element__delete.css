@@ -16,3 +16,7 @@
     background: url(../../../images/element__like_active.svg);
     opacity: 1;
 }
+
+.element__delete.button_nonactive {
+    display: none;
+}

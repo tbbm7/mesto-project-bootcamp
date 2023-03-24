@@ -51,7 +51,8 @@ function showInputError (formElement, inputElement, errorMessage, validationSett
   
   // Функция обработчика события input иизменения состояния кнопки
   function setEventListeners (formElement, validationSettings){
-    const inputList = Array.from(formElement.querySelectorAll(validationSettings.inputSelector));
+    const formElements = formElement.querySelectorAll(validationSettings.inputSelector);
+    const inputList = Array.from(formElements);
     const buttonElement = formElement.querySelector(validationSettings.submitButtonSelector);
   
     inputList.forEach((inputElement) => {
@@ -74,3 +75,4 @@ function showInputError (formElement, inputElement, errorMessage, validationSett
   export {
       enableValidation
     }
+    
