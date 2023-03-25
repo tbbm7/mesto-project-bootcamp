@@ -61,20 +61,20 @@ enableValidation({
 //Функция изменения заголовка страницы
 function handleProfileFormSubmit(evt) {
     evt.preventDefault();
-    const popup = document.querySelector('.popup_is-opened');
-    const button = popup.querySelector('.popup__button');
+    const button = evt.submitter;
     button.setAttribute('value', 'Сохранение...')
     editProfileData (user.value, about.value)
     .then((response) => {
       profileUser.textContent = response.name;
-      profileAbout.textContent = response.about;})
+      profileAbout.textContent = response.about;
+      closePopup(popUpEdit)
+    })
     .catch((err) => {
       console.log(err)
     })
     .finally(() => {
       button.setAttribute('value', 'Сохранить');
     });
-    closePopup(popUpEdit);
   }
 
 //Функция изменения аватара
@@ -85,6 +85,7 @@ function handleAvatarFormSubmit(evt) {
   editAvatarApi (avatarLink.value)
   .then((response) => {
     headerAvatar.setAttribute('src', response.avatar);
+    evt.target.reset();
     closePopup(popupAvatar);
   })
   .catch((err) => {
@@ -92,6 +93,8 @@ function handleAvatarFormSubmit(evt) {
   })
   .finally(() => {
     button.setAttribute('value', 'Сохранить');
+    button.classList.add('popup__button_disabled')
+    button.setAttribute('disabled', true);
   });
 }
 
@@ -111,7 +114,9 @@ function handleAddCard(evt) {
       console.log(err);
     })
     .finally(() => {
-        button.setAttribute('value', 'Создать');
+      button.setAttribute('value', 'Создать');
+      button.classList.add('popup__button_disabled')
+      button.setAttribute('disabled', true);
       });
   };
 

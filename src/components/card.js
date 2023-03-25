@@ -45,6 +45,9 @@ function createCard(item, user_id) {
             .then((item) => {
               deleteButton.closest('.element').remove();
             })
+            .catch((err) => {
+              console.log(err);
+          }); 
         });
     };
     likes.forEach(likeElement => {
