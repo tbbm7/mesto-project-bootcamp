@@ -13,7 +13,7 @@
     opacity: 0.5;
 }
 
-.element__button-like:active {
+.element__button-like.button_active {
     background: url(../../../images/element__like_active.svg);
     opacity: 1;
 }

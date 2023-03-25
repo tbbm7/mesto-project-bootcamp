@@ -5,7 +5,6 @@ import {
 } from './components/validate.js';
 
 import { 
-  handleAddCard,
   createCard
 } from './components/card.js';
 
@@ -19,11 +18,12 @@ import {
   editProfileData,
   getProfileData,
   editAvatarApi,
+  addNewCardApi
 } from './components/api.js';
 
 const editButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
-export const profileUser = document.querySelector('.profile__title');
+const profileUser = document.querySelector('.profile__title');
 export const profileAbout = document.querySelector('.profile__subtitle');
 const popUpEdit = document.querySelector('#edit-profile');
 export const popNewLocation = document.querySelector('#new-location');
@@ -77,15 +77,15 @@ function handleProfileFormSubmit(evt) {
     closePopup(popUpEdit);
   }
 
-  //Функция изменения аватара
+//Функция изменения аватара
 function handleAvatarFormSubmit(evt) {
   evt.preventDefault();
-  const popup = document.querySelector('.popup_is-opened');
-  const button = popup.querySelector('.popup__button');
+  const button = evt.submitter;
   button.setAttribute('value', 'Сохранение...')
   editAvatarApi (avatarLink.value)
   .then((response) => {
     headerAvatar.setAttribute('src', response.avatar);
+    closePopup(popupAvatar);
   })
   .catch((err) => {
     console.log(err);
@@ -93,8 +93,27 @@ function handleAvatarFormSubmit(evt) {
   .finally(() => {
     button.setAttribute('value', 'Сохранить');
   });
-  closePopup(popupAvatar);
 }
+
+  //Функция добавления новой карточки при нажатии на кнопку
+function handleAddCard(evt) {
+    evt.preventDefault();
+    const button = evt.submitter
+    button.setAttribute('value', 'Сохранение...')
+    addNewCardApi (nameInput.value, linkInput.value)
+    .then((item) => {
+      const card = createCard(item, item.owner._id);
+      elements.prepend(card);
+      evt.target.reset();
+      closePopup(popNewLocation);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+        button.setAttribute('value', 'Создать');
+      });
+  };
 
 // Функция отображения карточек на странице при запросе api 
 export function addCardsFromApi(cards, used_id) {

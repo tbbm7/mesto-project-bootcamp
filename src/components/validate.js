@@ -27,16 +27,10 @@ function showInputError (formElement, inputElement, errorMessage, validationSett
   function toggleButtonState (inputList, buttonElement, validationSettings) {
     if (hasInvalidInput(inputList)) {
       buttonElement.classList.add(validationSettings.inactiveButtonClass);
-      buttonElement.addEventListener('click', function (evt) {
-          const eventTarget = evt.target;
-          eventTarget.setAttribute('disabled', true);
-        });
+      buttonElement.setAttribute('disabled', true);
     } else {
       buttonElement.classList.remove(validationSettings.inactiveButtonClass);
-      buttonElement.addEventListener('click', function (evt) {
-          const eventTarget = evt.target;
-          eventTarget.removeAttribute('disabled', true);
-        });
+      buttonElement.removeAttribute('disabled', true);
     }
   }; 
   

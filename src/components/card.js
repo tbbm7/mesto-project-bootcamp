@@ -1,27 +1,20 @@
 ﻿import { 
     openPopup,
-    closePopup,
   } from './modal.js';
 
   import { 
     element,
-    elements,
-    popUpFormAdd,
     popUpImage,
     popupAbout,
     popupImageZoom,
-    popNewLocation,
-    nameInput,
-    linkInput
   } from '../index.js';
 
   import {
-    addNewCardApi, 
     deleteCardApi,
     putLikeApi,
     deleteLikeApi,
-    getInitialCards,
   } from './api.js';
+
 
 // Функция создания карточки
 function createCard(item, user_id) {
@@ -38,55 +31,39 @@ function createCard(item, user_id) {
     const likes = item.likes;
     likeNumber.textContent = likes.length;
     newElement.querySelector('.element__title').textContent = item.name;
-  
+    
     likeButton.addEventListener('click', function (evt) {
-    toggleLikeButton(likeNumber, likeButton, cardiD)
-  });
-
-  if ( itemOwned !==userId ) {
-      deleteButton.classList.add('button_nonactive')
-  }
-  else {
-      deleteButton.addEventListener('click', function (evt) {
-          deleteCardApi(cardiD);
-          deleteButton.closest('.element').remove();
-      });
-  };
-  likes.forEach(likeElement => {
-      if (likeElement._id == userId) {
-          likeButton.classList.add('button_active');
-      }
-  });
-  imageButton.addEventListener('click', function (evt) {
-    openPopup(popUpImage);
-    const imageElement = imageButton;
-    popupImageZoom.setAttribute('src', imageElement.src);
-    popupImageZoom.setAttribute('alt', imageElement.alt);
-    popupAbout.textContent = item.name;
+      toggleLikeButton(likeNumber, likeButton, cardiD)
     });
-  return newElement;
-  }
-  
-  //Функция добавления новой карточки при нажатии на кнопку
-  function handleAddCard(evt) {
-    evt.preventDefault();
-    const popup = document.querySelector('.popup_is-opened');
-    const button = popup.querySelector('.popup__button');
-    button.setAttribute('value', 'Сохранение...')
-    addNewCardApi (nameInput.value, linkInput.value)
-    .then((item) => {
-      const card = createCard(item, item.owner._id);
-      elements.prepend(card)
-    })
-    .finally(() => {
-        button.setAttribute('value', 'Сохранить');
-        // location.reload()
-      });
-    evt.target.reset();
-    closePopup(popNewLocation);
-  };
 
-  // Функция отображения колличества лайков на карточках
+    if ( itemOwned !==userId ) {
+        deleteButton.classList.add('button_nonactive')
+    }
+    else {
+        deleteButton.addEventListener('click', function (evt) {
+            deleteCardApi(cardiD)
+            .then((item) => {
+              deleteButton.closest('.element').remove();
+            })
+        });
+    };
+    likes.forEach(likeElement => {
+        if (likeElement._id == userId) {
+            likeButton.classList.add('button_active');
+        }
+    });
+    imageButton.addEventListener('click', function (evt) {
+      openPopup(popUpImage);
+      const imageElement = imageButton;
+      popupImageZoom.setAttribute('src', imageElement.src);
+      popupImageZoom.setAttribute('alt', imageElement.alt);
+      popUpImage.classList.add('popup__image_appearance');
+      popupAbout.textContent = item.name;
+      });
+    return newElement;
+  }
+
+// Функция отображения колличества лайков на карточках
 function toggleLikeButton(likeNumber ,button, cardiD) {
   if (button.classList.contains('button_active')) {
     deleteLikeApi(cardiD)
@@ -110,9 +87,8 @@ function toggleLikeButton(likeNumber ,button, cardiD) {
   }
 }
 
-  export {
-    handleAddCard,
-    createCard,
-    openPopup
-  }
-  
+export {
+
+  createCard,
+  openPopup
+}
