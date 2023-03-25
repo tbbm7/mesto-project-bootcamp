@@ -19,7 +19,7 @@
 .element__block{align-items:center;display:flex;justify-content:space-between;margin:25px 15px 31px 21px}
 .element__like-number{color:#000;font-size:13px;font-style:normal;font-weight:400;line-height:16px;margin:6px 0 0}
 .element__likes-block{align-items:center;display:flex;flex-direction:column;justify-content:space-between}
-.element__button-like{background:url(1ad06e85f169668a1f36.svg);background-position:50%;background-repeat:no-repeat;border:0;cursor:pointer;height:19px;transition:opacity .2s;width:22px}.element__button-like:hover{opacity:.5}.element__button-like:active{background:url(35948469632d0421d697.svg);opacity:1}
+.element__button-like{background:url(1ad06e85f169668a1f36.svg);background-position:50%;background-repeat:no-repeat;border:0;cursor:pointer;height:19px;transition:opacity .2s;width:22px}.element__button-like:hover{opacity:.5}.element__button-like.button_active{background:url(35948469632d0421d697.svg);opacity:1}
 .element__image{background-repeat:no-repeat;background-size:contain;height:282px;width:282px}@media screen and (max-width:320px){.element__image{height:88.375vw;width:88.375vw}}
 .element__title{color:#000;font-size:24px;font-weight:900;line-height:29px;margin:0;max-width:190px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .element__delete{background:url(ce3b64935accf9b8212e.svg);background-position:50%;background-repeat:no-repeat;border:0;cursor:pointer;height:19px;position:absolute;right:20px;top:20px;transition:opacity .2s;width:18px}.element__delete.button_active1{background:url(35948469632d0421d697.svg);opacity:1}.element__delete.button_nonactive{display:none}
